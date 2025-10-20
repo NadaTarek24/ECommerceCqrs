@@ -1,0 +1,12 @@
+# Ignore build folders
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.dbmdl
+*.log
+*.cache
+
+# Ignore EF migration backups
+Migrations/obj/

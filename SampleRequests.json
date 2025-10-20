@@ -1,0 +1,99 @@
+{
+  "description": "Sample JSON requests and responses for testing the ECommerceCqrs API.",
+
+  "endpoints": [
+    {
+      "endpoint": "POST /api/customers",
+      "purpose": "Create a new customer",
+      "sampleRequest": {
+        "name": "Nada Tarek",
+        "email": "nada.tarek@example.com",
+        "phone": "01012345678"
+      },
+      "sampleResponse": {
+        "id": 1,
+        "name": "Nada Tarek",
+        "email": "nada.tarek@example.com",
+        "phone": "01012345678"
+      }
+    },
+
+    {
+      "endpoint": "GET /api/customers",
+      "purpose": "Retrieve all customers",
+      "sampleResponse": [
+        {
+          "id": 1,
+          "name": "Nada Tarek",
+          "email": "nada.tarek@example.com",
+          "phone": "01012345678"
+        }
+      ]
+    },
+
+    {
+      "endpoint": "GET /api/customers/1",
+      "purpose": "Retrieve details of a specific customer by ID",
+      "sampleResponse": {
+        "id": 1,
+        "name": "Nada Tarek",
+        "email": "nada.tarek@example.com",
+        "phone": "01012345678"
+      }
+    },
+
+    {
+      "endpoint": "GET /api/customers/999",
+      "purpose": "Try to retrieve a customer that does not exist",
+      "expectedResponse": {
+        "message": "Customer not found"
+      }
+    },
+
+    {
+      "endpoint": "POST /api/orders",
+      "purpose": "Create a new order for a customer",
+      "sampleRequest": {
+        "customerId": 1,
+        "products": [
+          {
+            "productId": 1,
+            "quantity": 2
+          },
+          {
+            "productId": 2,
+            "quantity": 1
+          }
+        ]
+      },
+      "sampleResponse": {
+        "id": 1,
+        "customerName": "Nada Tarek",
+        "status": "Pending",
+        "numberOfProducts": 2,
+        "totalPrice": 9.0
+      }
+    },
+
+    {
+      "endpoint": "GET /api/orders/1",
+      "purpose": "Get details of an order by ID",
+      "sampleResponse": {
+        "id": 1,
+        "customerName": "Nada Tarek",
+        "status": "Pending",
+        "numberOfProducts": 2,
+        "totalPrice": 9.0
+      }
+    },
+
+    {
+      "endpoint": "POST /api/orders/UpdateOrderStatus/1",
+      "purpose": "Update order status to Delivered and reduce product stock",
+      "sampleRequest": "Delivered",
+      "sampleResponse": {
+        "message": "Order 1 status updated to Delivered"
+      }
+    }
+  ]
+}
